@@ -1,1 +1,20 @@
-<router-outlet></router-outlet>
+<div class="grid mx-0 mt-3">
+  <div class="col-12">
+    <p-messages></p-messages>
+  </div>
+  <div class="col-2" *ngIf="isSidebarNeeded">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div [class.col-10]="isSidebarNeeded" [class.col-12]="!isSidebarNeeded">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<div class="loader-wrapper" *ngIf="loading$ | async">
+  <div class="loader">
+    <p-progressSpinner></p-progressSpinner>
+  </div>
+  Loading
+</div>
+
+<p-confirmDialog></p-confirmDialog>

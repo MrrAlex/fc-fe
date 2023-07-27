@@ -1,0 +1,9 @@
+<div class="w-full mb-4">
+  <h4 class="mt-0 mb-2">Section Label</h4>
+  <p-editor [formControl]="questionName" [style]="{height: '100px'}"></p-editor>
+</div>
+<div class="w-full">
+  <h4 class="mt-0 mb-2">Download Type</h4>
+  <p-radioButton [formControl]="options" value="block" label="This module" [disabled]="true"></p-radioButton>
+  <p-radioButton [formControl]="options" value="course" label="Whole course" [disabled]="true"></p-radioButton>
+</div>

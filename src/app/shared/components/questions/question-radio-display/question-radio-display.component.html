@@ -1,0 +1,4 @@
+<div [innerHTML]="questionLabel.value" class="mb-4"></div>
+<div *ngFor="let option of options" class="mb-2">
+  <p-radioButton [formControl]="answer" [value]="option.value" [label]="option.label" [disabled]="true"></p-radioButton>
+</div>

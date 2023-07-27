@@ -1,0 +1,11 @@
+<form (ngSubmit)="goSave()" [formGroup]="moduleForm" *ngIf="moduleForm">
+  <div class="w-full">
+    <h4 class="mt-0 mb-2">Module Name</h4>
+    <input pInputText [formControl]="name" class="w-full"/>
+  </div>
+  <div class="flex mt-2">
+    <button class="p-button-sm p-button-secondary mr-3" type="button" pButton label="Cancel"
+            (click)="closeModal()"></button>
+    <button class="p-button-sm" type="submit" pButton label="Save" [disabled]="!moduleForm.valid"></button>
+  </div>
+</form>

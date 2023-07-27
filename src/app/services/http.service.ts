@@ -8,7 +8,7 @@ export class HttpService {
   constructor(private http: HttpClient) {}
 
   get<T>(url: string, params?: any) {
-    return this.http.get<T>(url, { params });
+    return this.http.get<T>(url, { params, withCredentials: true });
   }
 
   post<T>(url: string, payload: any, params?: any) {

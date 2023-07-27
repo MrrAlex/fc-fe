@@ -1,0 +1,28 @@
+::ng-deep {
+  .p-menu {
+    width: 100%;
+    background-color: #f1f3f4;
+    border: 3px solid #d6dde1;
+    border-radius: 15px;
+    min-height: 50vh;
+  }
+
+  .p-menuitem {
+    padding: 10px 20px;
+    margin: 20px 0;
+  }
+
+  .p-menuitem-link {
+    padding: 1.1rem 2rem!important;
+    border-radius: 20px!important;
+
+    &:hover, &.p-menuitem-link-active {
+      background-color: #081325!important;
+
+      & span {
+        color: #fff!important;
+      }
+    }
+  }
+
+}

@@ -1,5 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Course } from '../../models/course.model';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Course } from '../../../store/models/course.model';
 import {
   UntypedFormBuilder,
   UntypedFormControl,
@@ -16,16 +16,22 @@ export class AddCourseFormComponent implements OnInit {
   @Output()
   addCourse = new EventEmitter<Course>();
 
-  courseForm!: UntypedFormGroup;
-
-  constructor(private fb: UntypedFormBuilder) {}
-
-  ngOnInit(): void {
+  @Input()
+  set course(course: Course | null | undefined) {
     this.courseForm = this.fb.group({
-      name: this.fb.control('', { validators: Validators.required }),
-      description: this.fb.control('', { validators: Validators.required }),
+      name: this.fb.control(course?.name ?? '', {
+        validators: Validators.required,
+      }),
+      description: this.fb.control(course?.description ?? '', {
+        validators: Validators.required,
+      }),
     });
   }
+
+  courseForm!: UntypedFormGroup;
+  constructor(private fb: UntypedFormBuilder) {}
+
+  ngOnInit(): void {}
 
   get name(): UntypedFormControl {
     return this.courseForm.get('name') as UntypedFormControl;

@@ -1,0 +1,29 @@
+<form (ngSubmit)="goSave()" [formGroup]="questionForm" *ngIf="questionForm">
+  <div class="w-full mb-4">
+    <h3 class="mt-0 mb-2 font-medium">Question type</h3>
+    <div class="flex flex-wrap gap-3">
+      <div class="flex align-items-center" *ngFor="let typeOption of types">
+        <p-radioButton [inputId]="typeOption.value" name="type" [formControl]="type"
+                       [value]="typeOption.value"></p-radioButton>
+        <label [for]="typeOption.value" class="ml-2">{{ typeOption.label }}</label>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="(type.value === 'text' || type.value === 'textSection') && questionConfig">
+    <app-question-text-answer [form]="questionConfig"></app-question-text-answer>
+  </div>
+  <div *ngIf="(type.value === 'checkbox' || type.value === 'radio') && questionConfig">
+    <app-question-multiple-answers [form]="questionConfig"></app-question-multiple-answers>
+  </div>
+  <div *ngIf="type.value === 'download' && questionConfig">
+    <app-question-download [form]="questionConfig"></app-question-download>
+  </div>
+  <div *ngIf="type.value === 'range' && questionConfig">
+    <app-question-range-answer [form]="questionConfig"></app-question-range-answer>
+  </div>
+  <div class="flex mt-4">
+    <button class="p-button-sm p-button-secondary mr-3" type="button" pButton label="Cancel"
+            (click)="closeModal()"></button>
+    <button class="p-button-sm" icon="pi pi-save" type="submit" pButton label="Save" [disabled]="!questionForm.valid"></button>
+  </div>
+</form>

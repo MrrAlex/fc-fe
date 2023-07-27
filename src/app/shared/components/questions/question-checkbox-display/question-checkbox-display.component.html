@@ -1,0 +1,4 @@
+<div [innerHTML]="questionLabel" class="mb-4"></div>
+<div *ngFor="let option of options" class="mb-2">
+  <p-checkbox [formControl]="answer" [value]="option.value" [label]="option.label" [readonly]="readonly"></p-checkbox>
+</div>

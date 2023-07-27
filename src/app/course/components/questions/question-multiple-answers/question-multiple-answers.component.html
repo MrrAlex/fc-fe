@@ -1,0 +1,12 @@
+<div class="w-full mb-4">
+  <h4 class="mt-0 mb-2">Question name</h4>
+  <p-editor [formControl]="questionName" [style]="{height: '100px'}"></p-editor>
+</div>
+<div class="w-full">
+  <h4 class="mt-0 mb-2">Possible Answers</h4>
+  <div *ngFor="let control of options.controls" class="flex align-items-center mb-4">
+    <span class="mr-6">Label</span>
+    <input pInputText [formControl]="getQuestionLabelControl(control)" class="w-6 p-inputtext-sm"/>
+  </div>
+  <button pButton type="button" class="p-button p-button-sm" label="Add option" icon="pi pi-plus" (click)="addOption()"></button>
+</div>

@@ -1,0 +1,25 @@
+//@import 'primeflex/primeflex.scss';
+
+::ng-deep {
+  .lesson-wrapper {
+    p, h1 {
+      margin: 0 0 1rem 0;
+    }
+  }
+
+  .p-orderlist-controls {
+    display: none !important;
+  }
+
+  .p-orderlist .p-orderlist-list {
+    border: none;
+    overflow: visible;
+  }
+
+  .p-orderlist .p-orderlist-list .p-orderlist-item {
+    //@include styleclass('shadow-4 border-round-2xl mt-4 p-4')
+  }
+}
+
+
+

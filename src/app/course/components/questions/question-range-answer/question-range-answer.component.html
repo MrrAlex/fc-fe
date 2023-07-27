@@ -1,0 +1,16 @@
+<div class="w-full mb-4">
+  <h4 class="mt-0 mb-2">Question name</h4>
+  <p-editor [formControl]="questionName" [style]="{height: '100px'}"></p-editor>
+</div>
+<div class="w-full">
+  <h4 class="mt-0 mb-2">Labels</h4>
+
+  <div class="flex align-items-center mb-4">
+    <span class="mr-6">Left Label</span>
+    <input pInputText [formControl]="getMinLabelControl()" class="w-6 p-inputtext-sm"/>
+  </div>
+  <div class="flex align-items-center mb-4">
+    <span class="mr-6">Right Label</span>
+    <input pInputText [formControl]="getMaxLabelControl()" class="w-6 p-inputtext-sm"/>
+  </div>
+</div>

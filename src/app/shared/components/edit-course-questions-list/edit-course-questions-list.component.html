@@ -1,0 +1,76 @@
+<div *ngIf="questions" class="lesson-wrapper">
+  <div class="flex align-items-center">
+    <h2>Lesson {{lessonName}}</h2>
+    <div class="ml-4" *ngIf="readonly">
+      <button pButton label="Add new question" (click)="addQuestionModal()" icon="pi pi-plus"></button>
+    </div>
+  </div>
+  <div *ngIf="questions.length === 0">
+    No questions present.
+  </div>
+  <p-orderList [value]="questions" [dragdrop]="true" (onReorder)="reorder()" *ngIf="readonly">
+    <ng-template let-question pTemplate="item">
+      <div class="flex justify-content-between">
+        <div class="flex">
+          <div class="mr-4">
+            <i class="pi pi-bars"></i>
+          </div>
+          <div *ngIf="question.type === 'textSection'">
+            <app-question-section-display [sectionText]="question.config.question"></app-question-section-display>
+          </div>
+          <div *ngIf="question.type === 'text'">
+            <app-question-text-display [question]="groupByIndex(question._id)"></app-question-text-display>
+          </div>
+          <div *ngIf="question.type === 'checkbox'">
+            <app-question-checkbox-display [question]="groupByIndex(question._id)"></app-question-checkbox-display>
+          </div>
+          <div *ngIf="question.type === 'radio'">
+            <app-question-radio-display [question]="groupByIndex(question._id)"></app-question-radio-display>
+          </div>
+          <div *ngIf="question.type === 'range'">
+            <app-question-range-display [question]="groupByIndex(question._id)"></app-question-range-display>
+          </div>
+          <div *ngIf="question.type === 'download'">
+            <app-question-download-display [readonly]="readonly" [sectionText]="question.config.question"
+                                           [isBlock]="question.config.options[0] === 'block'"></app-question-download-display>
+          </div>
+        </div>
+        <div class="ml-4">
+          <button pButton icon="pi pi-pencil" class="p-button-sm" (click)="addQuestionModal(question)"></button>
+          <button pButton icon="pi pi-trash" class="p-button-sm ml-3" (click)="deleteQuestion(question)"></button>
+        </div>
+      </div>
+    </ng-template>
+  </p-orderList>
+  <div *ngIf="!readonly">
+    <div *ngFor="let question of questions; let i = index"
+         class="{{question.type !== 'textSection' ? 'shadow-4 p-4 border-round-2xl ' : ''}}mt-4">
+      <div *ngIf="question.type === 'textSection'">
+        <app-question-section-display [sectionText]="question.config.question"></app-question-section-display>
+      </div>
+      <div *ngIf="question.type === 'text'">
+        <app-question-text-display [question]="groupByIndex(question._id)"></app-question-text-display>
+      </div>
+      <div *ngIf="question.type === 'checkbox'">
+        <app-question-checkbox-display [question]="groupByIndex(question._id)"></app-question-checkbox-display>
+      </div>
+      <div *ngIf="question.type === 'radio'">
+        <app-question-radio-display [question]="groupByIndex(question._id)"></app-question-radio-display>
+      </div>
+      <div *ngIf="question.type === 'range'">
+        <app-question-range-display [question]="groupByIndex(question._id)"></app-question-range-display>
+      </div>
+      <div *ngIf="question.type === 'download'">
+        <app-question-download-display [readonly]="readonly" [sectionText]="question.config.question"
+                                       [isBlock]="question.config.options[0] === 'block'"></app-question-download-display>
+      </div>
+    </div>
+  </div>
+  <button pButton label="Save" (click)="saveLesson()" icon="pi pi-save" class="mt-4"
+          *ngIf="questions?.length && readonly"></button>
+
+  <button pButton label="Save Answer" (click)="saveAnswer()" icon="pi pi-save" class="mt-4"
+          *ngIf="!readonly && savePresent()"></button>
+</div>
+
+<p-confirmDialog></p-confirmDialog>

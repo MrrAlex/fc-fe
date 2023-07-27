@@ -1,5 +1,10 @@
-<div>
-  <button pButton icon="pi pi-plus" label="Add" routerLink="/courses/add"></button>
+<p-card>
+  <div class="flex align-items-center">
+    <h2>Courses</h2>
+    <div class="ml-4">
+      <button class="p-button-sm" pButton icon="pi pi-plus" label="Add new" routerLink="/courses/add"></button>
+    </div>
+  </div>
   <p-table [value]="courses">
     <ng-template pTemplate="header">
       <tr>
@@ -10,7 +15,15 @@
     <ng-template pTemplate="body" let-course>
       <tr>
         <td>{{ course.name }}</td>
+        <td>
+          <a [routerLink]="'/courses/' + course._id + '/edit'">
+            <button pButton class="p-button-text p-button-sm" icon="pi pi-pencil" label="Edit"></button>
+          </a>
+          <a [routerLink]="'/courses/' + course._id + '/modules'" class="ml-4">
+            <button pButton class="p-button-text p-button-sm" icon="pi pi-wrench" label="Edit modules"></button>
+          </a>
+        </td>
       </tr>
     </ng-template>
   </p-table>
-</div>
+</p-card>

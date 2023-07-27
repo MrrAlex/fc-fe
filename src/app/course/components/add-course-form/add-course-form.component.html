@@ -1,13 +1,15 @@
 <form (ngSubmit)="submit()" [formGroup]="courseForm">
-  <div class="w-full">
+  <div class="w-full mb-4">
     <h4 class="mt-0 mb-2">Name</h4>
     <input pInputText [formControl]="name" class="w-full"/>
   </div>
-  <div class="w-full">
+  <div class="w-full mb-2">
     <h4 class="mt-0 mb-2">Description</h4>
-    <textarea pInputTextarea [formControl]="description" class="w-full"></textarea>
+    <p-editor [formControl]="description" [style]="{ height: '320px' }"></p-editor>
   </div>
+
   <div class="flex mt-2">
-    <button class="p-button-sm" type="submit" pButton label="Add" icon="pi pi-plus" [disabled]="!courseForm.valid"></button>
+    <button class="p-button-sm" type="submit" pButton label="Add" icon="pi pi-plus"
+            [disabled]="!courseForm.valid"></button>
   </div>
 </form>

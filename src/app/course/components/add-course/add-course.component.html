@@ -1,1 +1,6 @@
-<app-add-course-form (addCourse)="addCourse($event)"></app-add-course-form>
+<p-card>
+  <div class="flex align-items-center">
+    <h2>{{editMode ? 'Edit' : ' New'}} Course</h2>
+  </div>
+  <app-add-course-form (addCourse)="addCourse($event)" [course]="course$ | async"></app-add-course-form>
+</p-card>

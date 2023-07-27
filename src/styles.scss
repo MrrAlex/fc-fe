@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: #b6c2c9;
+}
+
+ a {
+   text-decoration: none;
+ }
