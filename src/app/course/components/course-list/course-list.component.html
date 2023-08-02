@@ -2,7 +2,7 @@
   <div class="flex align-items-center">
     <h2>Courses</h2>
     <div class="ml-4">
-      <button class="p-button-sm" pButton icon="pi pi-plus" label="Add new" routerLink="/courses/add"></button>
+      <a class="p-button-sm" pButton icon="pi pi-plus" label="Add new" routerLink="./course"></a>
     </div>
   </div>
   <p-table [value]="courses">
@@ -16,10 +16,10 @@
       <tr>
         <td>{{ course.name }}</td>
         <td>
-          <a [routerLink]="'/courses/' + course._id + '/edit'">
+          <a routerLink="./course" [queryParams]="{id: course._id}">
             <button pButton class="p-button-text p-button-sm" icon="pi pi-pencil" label="Edit"></button>
           </a>
-          <a [routerLink]="'/courses/' + course._id + '/modules'" class="ml-4">
+          <a routerLink="./modules" [queryParams]="{courseId: course._id}" class="ml-4">
             <button pButton class="p-button-text p-button-sm" icon="pi pi-wrench" label="Edit modules"></button>
           </a>
         </td>

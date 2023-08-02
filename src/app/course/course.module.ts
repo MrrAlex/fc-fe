@@ -40,30 +40,18 @@ import {AppStoreModule} from '../store/store.module';
 
 const routes: Routes = [
   {
-    path: 'list',
+    path: '',
     component: CourseListComponent,
     data: {
       sidebar: true,
     },
   },
   {
-    path: 'add',
+    path: 'course',
     component: AddCourseComponent,
   },
   {
-    path: ':id/edit',
-    component: AddCourseComponent,
-  },
-  {
-    path: ':id',
-    component: ViewCourseComponent,
-  },
-  {
-    path: ':courseId/modules',
-    component: EditCourseModulesPageComponent,
-  },
-  {
-    path: ':courseId/modules/:moduleId/lessons/:lessonId',
+    path: 'modules',
     component: EditCourseModulesPageComponent,
   },
 ];

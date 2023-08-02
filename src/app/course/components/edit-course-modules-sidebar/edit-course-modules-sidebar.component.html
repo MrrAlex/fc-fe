@@ -5,16 +5,20 @@
         <div class="flex align-items-center justify-content-between w-full">
           <span class="vertical-align-middle">{{module.name}}</span>
           <div>
-            <button pButton class="p-button-rounded p-button-sm p-button-outlined p-button" icon="pi pi-pencil"
-                    (click)="openAddModuleModal($event ,module)"></button>
-            <button pButton class="p-button-rounded p-button-sm p-button-outlined p-button mr-2" icon="pi pi-plus"
-                    (click)="openAddLessonModal($event ,module)"></button>
+            <button (click)="openAddModuleModal($event ,module)"
+                    class="p-button-rounded p-button-sm p-button-outlined p-button" icon="pi pi-pencil"
+                    pButton></button>
+            <button (click)="openAddLessonModal($event ,module)"
+                    class="p-button-rounded p-button-sm p-button-outlined p-button mr-2" icon="pi pi-plus"
+                    pButton></button>
           </div>
         </div>
       </ng-template>
       <ng-template pTemplate="content">
-        <a *ngFor="let lesson of module.lessons" class="w-full lesson flex align-items-center"
-             [routerLink]="lessonLink(module, lesson)">
+        <a *ngFor="let lesson of module.lessons"
+           [queryParams]="{moduleId: module._id, lessonId: lesson._id, courseId: courseId}"
+           class="w-full lesson flex align-items-center"
+           routerLink="./">
           <span>{{lesson.name}}</span>
         </a>
       </ng-template>
@@ -22,4 +26,4 @@
   </p-accordion>
 </div>
 
-<button pButton label="Add New Module" class="mt-4 ml-2" (click)="openAddModuleModal($event)"></button>
+<button (click)="openAddModuleModal($event)" class="mt-4 ml-2" label="Add New Module" pButton></button>

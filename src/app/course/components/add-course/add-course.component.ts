@@ -22,7 +22,7 @@ export class AddCourseComponent implements OnInit {
   id = '';
 
   ngOnInit() {
-    this.route.params.subscribe((params) => {
+    this.route.queryParams.subscribe((params) => {
       if (params['id']) {
         this.courseFacade.loadCourse(params['id']);
         this.course$ = this.courseFacade.selectEntityById$(params['id']);

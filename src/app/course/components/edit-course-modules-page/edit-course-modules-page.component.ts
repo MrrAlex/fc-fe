@@ -25,7 +25,7 @@ export class EditCourseModulesPageComponent implements OnInit {
   course?: Course;
 
   ngOnInit() {
-    this.route.params.pipe(take(1)).subscribe((params) => {
+    this.route.queryParams.pipe(take(1)).subscribe((params) => {
       if (params['courseId']) {
         this.courseFacade.loadCourse(params['courseId']);
         this.courseFacade
@@ -33,8 +33,6 @@ export class EditCourseModulesPageComponent implements OnInit {
           .subscribe((course) => (this.course = course));
         this.courseId = params['courseId'];
       }
-    });
-    this.route.params.subscribe((params) => {
       if (params['lessonId']) {
         this.lessonId = params['lessonId'];
       }

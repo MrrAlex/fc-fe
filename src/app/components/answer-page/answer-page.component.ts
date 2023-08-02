@@ -19,7 +19,7 @@ export class AnswerPageComponent implements OnInit {
   lessonId!: string;
 
   ngOnInit() {
-    this.route.params.pipe(take(1)).subscribe((params) => {
+    this.route.queryParams.pipe(take(1)).subscribe((params) => {
       if (params['lessonId']) {
         this.lessonId = params['lessonId'];
       }

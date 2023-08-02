@@ -15,6 +15,7 @@ export class AuthService {
   }
 
   retrieveLoginData() {
-    this._user = 'some user id';
+    // @ts-ignore
+    this._user = user_data.user_id?? 'test user';
   }
 }

@@ -1,9 +1,9 @@
 const { execSync } = require('child_process');
-const fs = require('fs');
+const fs = require('fs-extra');
 const pluginName = 'fe-angular';
 const appName = 'fc-fe'
 const pluginFileName = `${pluginName}.php`;
-const destination = `./plugin/${pluginName}`;
+const destination = `../plugin/${pluginName}`;
 const pluginFilePath = `${destination}/${pluginFileName}`
 
 console.log('Remove previous dist folder');
@@ -14,8 +14,7 @@ console.log('Start build stage');
 // Run the build command
 execSync('ng build --configuration production', { encoding: 'utf-8', stdio: 'inherit' });
 console.log('Build finished, copy build files to plugin folder');
-// Move the bundle from the `/app` folder to the plugin's folder
-execSync(`mv ./dist ${destination}`)
+fs.moveSync('../dist', `${destination}/dist`)
 
 console.log('Finished moving');
 // copy the js and css file names to an array

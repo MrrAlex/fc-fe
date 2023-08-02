@@ -16,7 +16,7 @@ export class Constants {
 
   public static lessonsApi = `${Constants.baseUrl}/lesson`;
   public static lessonApi = (id: string) => `${Constants.lessonsApi}/${id}`
-  public static answersByLesson = (id: string, user: string) => `${Constants.lessonsApi}/${id}/user/${user}/answers`
+  public static answersByLesson = (id: string) => `${Constants.lessonsApi}/${id}/answers`
   public static assignQuestionToLessonApi = (id: string) => `${Constants.lessonsApi}/${id}/question`
   public static updateLessonApi = (lessonId: string) =>
     `${Constants.lessonsApi}/${lessonId}/`;

@@ -3,6 +3,7 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter, map, switchMap } from 'rxjs';
 import { MessageService } from 'primeng/api';
 import { StoreFacade } from './store/store.facade';
+import {HttpService} from "./services/http.service";
 
 @Component({
   selector: 'app-root',
@@ -21,6 +22,12 @@ export class AppComponent implements OnInit {
   loading$ = this.storeFacade.loading$;
 
   ngOnInit() {
+    const user = window["user_data" as any];
+    console.log(user)
+    console.log(window);
+    setTimeout(() => {
+      console.log(window["user_data" as any])
+    }, 5000)
     this.storeFacade.errorMessage.subscribe((error) => {
       if (error) {
         this.messageService.add({

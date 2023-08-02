@@ -17,6 +17,6 @@ export class AnswersService {
   }
 
   loadAnswers(lessonId: string, user: string) {
-    return this.http.get<Answer[]>(Constants.answersByLesson(lessonId, user));
+    return this.http.get<Answer[]>(Constants.answersByLesson(lessonId), {userId: user});
   }
 }

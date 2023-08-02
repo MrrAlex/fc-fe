@@ -28,12 +28,12 @@ import {ConfirmDialogModule} from "primeng/confirmdialog";
 
 const routes: Routes = [
   {
-    path: 'courses',
+    path: 'admin/courses',
     loadChildren: () =>
       import('./course/course.module').then((m) => m.CourseModule),
   },
   {
-    path: 'lesson/:lessonId/answer',
+    path: 'lesson',
     component: AnswerPageComponent,
     data: {
       sidebar: false,
