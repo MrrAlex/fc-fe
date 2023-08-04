@@ -1,26 +1,33 @@
 <div class="w-full">
-  <p-accordion [multiple]="true">
-    <p-accordionTab *ngFor="let module of modules">
+  <p-accordion [multiple]="true" [activeIndex]="selectedLesson">
+    <p-accordionTab *ngFor="let module of modules;trackBy:moduleId">
       <ng-template pTemplate="header">
         <div class="flex align-items-center justify-content-between w-full">
           <span class="vertical-align-middle">{{module.name}}</span>
-          <div>
+          <div class="edit-buttons">
             <button (click)="openAddModuleModal($event ,module)"
-                    class="p-button-rounded p-button-sm p-button-outlined p-button" icon="pi pi-pencil"
+                    class="p-button-rounded p-button-outlined p-button mr-2" icon="pi pi-pencil"
                     pButton></button>
             <button (click)="openAddLessonModal($event ,module)"
-                    class="p-button-rounded p-button-sm p-button-outlined p-button mr-2" icon="pi pi-plus"
+                    class="p-button-rounded p-button-outlined p-button" icon="pi pi-plus"
                     pButton></button>
           </div>
         </div>
       </ng-template>
       <ng-template pTemplate="content">
-        <a *ngFor="let lesson of module.lessons"
-           [queryParams]="{moduleId: module._id, lessonId: lesson._id, courseId: courseId}"
-           class="w-full lesson flex align-items-center"
-           routerLink="./">
-          <span>{{lesson.name}}</span>
-        </a>
+        <div class="flex justify-content-between justify-content-center my-2" *ngFor="let lesson of module.lessons">
+          <a [queryParams]="{moduleId: module._id, lessonId: lesson._id, courseId: courseId}"
+             class="w-full lesson flex align-items-center"
+             routerLink="./">
+            <span>{{lesson.name}}</span>
+          </a>
+          <div class="edit-buttons">
+            <button (click)="openAddLessonModal($event, module, lesson)"
+                    class="p-button-rounded p-button-outlined p-button mr-2" icon="pi pi-pencil"
+                    pButton></button>
+          </div>
+        </div>
+
       </ng-template>
     </p-accordionTab>
   </p-accordion>

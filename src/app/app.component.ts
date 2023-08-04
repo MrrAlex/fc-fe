@@ -22,12 +22,6 @@ export class AppComponent implements OnInit {
   loading$ = this.storeFacade.loading$;
 
   ngOnInit() {
-    const user = window["user_data" as any];
-    console.log(user)
-    console.log(window);
-    setTimeout(() => {
-      console.log(window["user_data" as any])
-    }, 5000)
     this.storeFacade.errorMessage.subscribe((error) => {
       if (error) {
         this.messageService.add({

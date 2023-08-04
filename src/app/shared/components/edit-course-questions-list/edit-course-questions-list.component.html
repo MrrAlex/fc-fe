@@ -1,6 +1,6 @@
 <div *ngIf="questions" class="lesson-wrapper">
   <div class="flex align-items-center">
-    <h2>Lesson {{lessonName}}</h2>
+    <h1>{{lessonName}}</h1>
     <div class="ml-4" *ngIf="readonly">
       <button pButton label="Add new question" (click)="addQuestionModal()" icon="pi pi-plus"></button>
     </div>
@@ -10,11 +10,11 @@
   </div>
   <p-orderList [value]="questions" [dragdrop]="true" (onReorder)="reorder()" *ngIf="readonly">
     <ng-template let-question pTemplate="item">
-      <div class="flex justify-content-between">
-        <div class="flex">
-          <div class="mr-4">
-            <i class="pi pi-bars"></i>
-          </div>
+      <div class="grid">
+        <div class="col">
+          <i class="pi pi-bars"></i>
+        </div>
+        <div class="col-9">
           <div *ngIf="question.type === 'textSection'">
             <app-question-section-display [sectionText]="question.config.question"></app-question-section-display>
           </div>
@@ -35,7 +35,7 @@
                                            [isBlock]="question.config.options[0] === 'block'"></app-question-download-display>
           </div>
         </div>
-        <div class="ml-4">
+        <div class="col-2">
           <button pButton icon="pi pi-pencil" class="p-button-sm" (click)="addQuestionModal(question)"></button>
           <button pButton icon="pi pi-trash" class="p-button-sm ml-3" (click)="deleteQuestion(question)"></button>
         </div>

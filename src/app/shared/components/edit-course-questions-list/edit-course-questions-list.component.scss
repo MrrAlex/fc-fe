@@ -2,8 +2,13 @@
 
 ::ng-deep {
   .lesson-wrapper {
-    p, h1 {
-      margin: 0 0 1rem 0;
+    h1, h2 {
+      margin: 0;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin: 0 0 0.5rem 0;
     }
   }
 

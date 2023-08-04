@@ -17,9 +17,6 @@ import { SharedModule } from './shared/shared.module';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MenuModule } from 'primeng/menu';
 import { MessagesModule } from 'primeng/messages';
-import { CourseFacade } from './store/course';
-import { LessonFacade } from './store/lesson';
-import { AnswersFacade } from './store/answers';
 import { AppStoreModule } from './store/store.module';
 import { StoreFacade } from './store/store.facade';
 import { MessageService } from 'primeng/api';
@@ -28,7 +25,7 @@ import {ConfirmDialogModule} from "primeng/confirmdialog";
 
 const routes: Routes = [
   {
-    path: 'admin/courses',
+    path: 'angular/courses',
     loadChildren: () =>
       import('./course/course.module').then((m) => m.CourseModule),
   },

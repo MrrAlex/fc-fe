@@ -42,6 +42,8 @@ const updatedFileContentArray = pluginFileContents.split(/\r?\n/).map(line => {
       return updateLine(line, 'polyfills');
     case line.includes('wp_register_script( \'ng_runtime'):
       return updateLine(line, 'runtime');
+    case line.includes('wp_register_script( \'504'):
+      return updateLine(line, '504');
     default:
       return line;
   }
@@ -51,3 +53,7 @@ const updatedFileContents = updatedFileContentArray.join('\n');
 // write the new names to the php file
 fs.writeFileSync(`${pluginFilePath}`, updatedFileContents);
 console.log(`*************** ${pluginFileName} updated! ***************`)
+
+execSync('scp -r ../plugin/fe-angular/ finuchenie@45.128.205.18:/var/www/funuchenie/data/www/finuchenie.online/wp-content/plugins', { encoding: 'utf-8', stdio: 'inherit' })
+
+console.log('pasted');

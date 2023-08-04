@@ -14,17 +14,20 @@ import { Lesson } from '../../../store/models/lesson.model';
 export class EditCourseModulesSidebarComponent {
   constructor(private dialogService: DialogService) {}
 
-  lessonLink(module: StudyModule, lesson: Lesson) {
-    return `/courses/${this.courseId}/modules/${module._id}/lessons/${lesson._id}`
-  }
-
   @Input()
   courseId!: string;
 
   @Input()
   modules!: StudyModule[] | undefined;
 
+  @Input()
+  selectedLesson!: number[];
+
   menuItems!: MenuItem[];
+
+  moduleId(index: number, module: StudyModule) {
+    return module._id;
+  }
 
   openAddLessonModal(e: Event, module: StudyModule, lesson?: Lesson) {
     e.stopPropagation();
@@ -44,7 +47,7 @@ export class EditCourseModulesSidebarComponent {
     this.dialogService.open(AddModuleModalComponent, {
       data: {
         courseId: this.courseId,
-        module
+        module,
       },
       header: !!module ? 'Edit module' : 'Add module',
       styleClass: 'w-full lg:w-6',

@@ -24,7 +24,6 @@ import { ConfirmationService } from 'primeng/api';
 })
 export class EditCourseQuestionsListComponent implements OnInit {
   constructor(
-    private store: Store<CourseState>,
     private lessonsFacade: LessonFacade,
     private answersFacade: AnswersFacade,
     private dialogService: DialogService,
@@ -98,7 +97,7 @@ export class EditCourseQuestionsListComponent implements OnInit {
         return {
           answer: Array.isArray(val.answer) ? val.answer : [val.answer],
           questionId: val.questionId,
-          lessonId: this.lessonId,
+          lessonId: this.lesson,
           ...(answer ? { _id: answer._id } : {}),
         };
       });

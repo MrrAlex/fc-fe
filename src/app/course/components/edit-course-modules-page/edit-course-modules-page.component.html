@@ -4,7 +4,7 @@
   </div>
   <div class="col-3 pt-0">
     <app-edit-course-modules-sidebar *ngIf="course?.modules && courseId" [modules]="course?.modules"
-                                     [courseId]="courseId"></app-edit-course-modules-sidebar>
+                                     [courseId]="courseId" [selectedLesson]="selectedLesson"></app-edit-course-modules-sidebar>
   </div>
   <div class="col-9 p-5 shadow-4 bg-white border-round">
     <app-edit-course-questions-list [lessonId]="lessonId"></app-edit-course-questions-list>

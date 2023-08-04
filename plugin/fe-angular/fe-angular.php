@@ -8,10 +8,10 @@
 
 function load_ng_scripts() {
     wp_enqueue_style( 'ng_styles', plugin_dir_url( __FILE__ ) . 'dist/fc-fe/styles.a36e4d787a2b3ab7.css' );
-    wp_register_script( 'ng_main', plugin_dir_url( __FILE__ ) . 'dist/fc-fe/main.0f45c1fabe218e8b.js', [], false, true );
+    wp_register_script( 'ng_main', plugin_dir_url( __FILE__ ) . 'dist/fc-fe/main.af309097b047124f.js', [], false, true );
     wp_register_script( 'ng_polyfills', plugin_dir_url( __FILE__ ) . 'dist/fc-fe/polyfills.12e4f5b9b273a830.js', [], false, true );
-    wp_register_script( 'ng_runtime', plugin_dir_url( __FILE__ ) . 'dist/fc-fe/runtime.92184e280e3ac7ca.js', [], false, true );
-    wp_register_script( 'ng_additional', plugin_dir_url( __FILE__ ) . 'dist/fc-fe/504.8bd5e3db6f15f558.js', [], false, true );
+    wp_register_script( 'ng_runtime', plugin_dir_url( __FILE__ ) . 'dist/fc-fe/runtime.b00716f348ad6b5b.js', [], false, true );
+    wp_register_script( 'ng_additional', plugin_dir_url( __FILE__ ) . 'dist/fc-fe/504.c7e61e68fac32ec2.js', [], false, true );
 }
 
 add_action( 'wp_enqueue_scripts', 'load_ng_scripts' );
