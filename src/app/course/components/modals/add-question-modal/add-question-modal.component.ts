@@ -54,11 +54,13 @@ export class AddQuestionModalComponent implements OnInit {
   ];
   questionForm!: UntypedFormGroup;
   lessonId!: string;
+  moduleId!: string;
   question?: Question;
   isEdit = false;
 
   ngOnInit() {
     this.lessonId = this.config.data.lessonId;
+    this.moduleId = this.config.data.moduleId;
     this.question = this.config.data.question;
     this.isEdit = !!this.question;
 
@@ -87,7 +89,6 @@ export class AddQuestionModalComponent implements OnInit {
       type: value.type,
       config: value.config,
     };
-    console.log(value, question);
     if (this.isEdit) {
       this.lessonFacade.updateQuestionFroLession(this.lessonId, question);
     } else {
@@ -129,6 +130,7 @@ export class AddQuestionModalComponent implements OnInit {
         'config',
         this.fb.group({
           question: this.fb.control(questionValue, Validators.required),
+          moduleId: this.moduleId,
           options: this.fb.array(
             this.question?.config.options ?? [''],
             Validators.required

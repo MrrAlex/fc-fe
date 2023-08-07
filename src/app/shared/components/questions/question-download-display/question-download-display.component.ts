@@ -1,5 +1,4 @@
-import {Component, Input} from '@angular/core';
-import {LessonFacade} from "../../../../store/lesson";
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-question-download-display',
@@ -7,9 +6,7 @@ import {LessonFacade} from "../../../../store/lesson";
   styleUrls: ['./question-download-display.component.scss']
 })
 export class QuestionDownloadDisplayComponent {
-  constructor(private lessonFacade: LessonFacade) {
-
-  }
+  constructor() {}
 
   @Input()
   readonly!: boolean;
@@ -20,6 +17,10 @@ export class QuestionDownloadDisplayComponent {
   @Input()
   isBlock!: boolean
 
+  @Output()
+  downloadFile = new EventEmitter<boolean>();
+
   download() {
+    this.downloadFile.emit(this.isBlock)
   }
 }

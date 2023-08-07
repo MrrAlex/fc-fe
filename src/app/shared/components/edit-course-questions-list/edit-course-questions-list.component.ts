@@ -28,10 +28,14 @@ export class EditCourseQuestionsListComponent implements OnInit {
     private answersFacade: AnswersFacade,
     private dialogService: DialogService,
     private fb: UntypedFormBuilder,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   questionsForm!: UntypedFormArray;
+
+  @Input()
+  moduleId!: string
 
   @Input()
   readonly = true;
@@ -59,7 +63,6 @@ export class EditCourseQuestionsListComponent implements OnInit {
             this._answers,
             this.readonly
           );
-          this.questionsForm.valueChanges.subscribe(console.log);
         }
       });
     }
@@ -73,14 +76,19 @@ export class EditCourseQuestionsListComponent implements OnInit {
   }
 
   addQuestionModal(question?: Question) {
-    this.dialogService.open(AddQuestionModalComponent, {
+    const ref = this.dialogService.open(AddQuestionModalComponent, {
       header: !!question ? 'Edit Question' : 'Add Question',
       data: {
         lessonId: this.lesson,
+        moduleId: this.moduleId,
         question,
       },
       styleClass: 'w-full lg:w-6',
     });
+
+    ref.onClose.subscribe(() => {
+      this.cdr.markForCheck()
+    })
   }
 
   saveLesson() {
@@ -169,5 +177,13 @@ export class EditCourseQuestionsListComponent implements OnInit {
         this.questionsForm.removeAt(index);
       },
     });
+  }
+
+  downloadPdf({isBlock}: any, moduleId?: string) {
+    if (isBlock) {
+      this.answersFacade.downloadCoursePdf()
+    } else {
+      this.answersFacade.downloadModulePdf(moduleId as string)
+    }
   }
 }

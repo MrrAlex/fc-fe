@@ -29,4 +29,12 @@ export class AnswersFacade {
   loadAnswers(lessonId: string) {
     this.store.dispatch(AnswerActions.loadAnswers({ lessonId, user: this.auth.currentUser }));
   }
+
+  downloadCoursePdf() {
+    this.store.dispatch(AnswerActions.loadCoursePdf({ user: this.auth.currentUser }));
+  }
+
+  downloadModulePdf(moduleId: string) {
+    this.store.dispatch(AnswerActions.loadModulePdf({ moduleId, user: this.auth.currentUser }));
+  }
 }

@@ -23,4 +23,6 @@ export class Constants {
 
   public static answersApi = `${Constants.baseUrl}/answer`;
   public static storeMultipleAnswerApi = (user: string) => `${Constants.baseUrl}/answer/user/${user}`;
+
+  public static generatePdf = (user: string) => `${Constants.answersApi}/generate/user/${user}`
 }
