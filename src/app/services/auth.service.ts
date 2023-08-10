@@ -16,6 +16,6 @@ export class AuthService {
 
   retrieveLoginData() {
     // @ts-ignore
-    this._user = 'test user';
+    this._user = user_data['user_id'];
   }
 }

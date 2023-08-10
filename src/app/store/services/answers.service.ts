@@ -17,10 +17,16 @@ export class AnswersService {
   }
 
   loadAnswers(lessonId: string, user: string) {
-    return this.http.get<Answer[]>(Constants.answersByLesson(lessonId), {userId: user});
+    return this.http.get<Answer[]>(Constants.answersByLesson(lessonId), {
+      userId: user,
+    });
   }
 
-  loadPdfWithAnswers(user: string, moduleId?:string) {
-    return this.http.get<Blob>(Constants.generatePdf(user), {moduleId});
+  loadPdfWithAnswers(user: string, moduleId?: string) {
+    return this.http.post<Blob>(
+      Constants.generatePdf(user),
+      null,
+      moduleId ? { moduleId } : undefined
+    );
   }
 }
