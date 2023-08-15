@@ -42,6 +42,9 @@
       </div>
     </ng-template>
   </p-orderList>
+  <div class="ml-4" *ngIf="readonly && questions.length > 5">
+    <button pButton label="Add new question" (click)="addQuestionModal()" icon="pi pi-plus"></button>
+  </div>
   <div *ngIf="!readonly">
     <div *ngFor="let question of questions; let i = index"
          class="{{question.type !== 'textSection' ? 'shadow-4 p-4 border-round-2xl ' : ''}}mt-4">
@@ -62,7 +65,8 @@
       </div>
       <div *ngIf="question.type === 'download'">
         <app-question-download-display [readonly]="readonly" [sectionText]="question.config.question"
-                                       [isBlock]="question.config.options[0] === 'block'"></app-question-download-display>
+                                       [isBlock]="question.config.options[0] === 'block'"
+        (downloadFile)="downloadPdf($event, question.config.moduleId)"></app-question-download-display>
       </div>
     </div>
   </div>

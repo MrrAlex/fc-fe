@@ -2,6 +2,7 @@ import { createEntityAdapter, EntityState } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';
 import * as AnswerActions from './answers.actions';
 import { Answer } from '../models/answer.model';
+import * as FileSaver from "file-saver";
 
 export interface AnswerState extends EntityState<Answer> {
   loading: boolean;
@@ -36,5 +37,13 @@ export const answersReducer = createReducer(
     ...state,
     loading: false,
     success: false,
-  }))
+  })),
+  on(AnswerActions.loadCoursePdf, (state) => ({...state, loading: true})),
+  on(AnswerActions.loadModulePdf, (state) => ({...state, loading: true})),
+  on(AnswerActions.loadPdfSuccess, (state, {pdf}) => {
+    FileSaver.saveAs(pdf, 'БПУФ.pdf')
+    return {...state, loading: false}
+  }),
+  on(AnswerActions.loadPdfFailed, (state) => ({...state, loading: false}))
+
 );
