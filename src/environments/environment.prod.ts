@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: 'https://worship-schedule-be.vercel.app'
+  baseUrl: 'https://fc-cvw.xyz/fc-be'
 };
