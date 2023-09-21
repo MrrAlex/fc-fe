@@ -11,7 +11,7 @@ import {
   QuestionOptions,
 } from '../../../../store/models/question.model';
 import { LessonFacade } from '../../../../store/lesson';
-import * as lodash from 'lodash'
+import * as lodash from 'lodash';
 
 @Component({
   selector: 'app-add-question-modal',
@@ -51,6 +51,10 @@ export class AddQuestionModalComponent implements OnInit {
       value: 'range',
       label: 'Range',
     },
+    {
+      value: 'table',
+      label: 'Table',
+    },
   ];
   questionForm!: UntypedFormGroup;
   lessonId!: string;
@@ -85,7 +89,9 @@ export class AddQuestionModalComponent implements OnInit {
   goSave() {
     const value = this.questionForm.value;
     const question: Question = {
-      ...(this.isEdit ? { _id: this.question?._id } : {_id: lodash.uniqueId('question-')}),
+      ...(this.isEdit
+        ? { _id: this.question?._id }
+        : { _id: lodash.uniqueId('question-') }),
       type: value.type,
       config: value.config,
     };
@@ -115,7 +121,9 @@ export class AddQuestionModalComponent implements OnInit {
     if (type === 'checkbox' || type === 'radio') {
       let fa: UntypedFormGroup[] = [];
       if (this.question) {
-        fa = this.question.config.options.map((o) => this.fb.group(o as QuestionOptions));
+        fa = this.question.config.options.map((o) =>
+          this.fb.group(o as QuestionOptions)
+        );
       }
       this.questionForm.setControl(
         'config',
@@ -139,14 +147,35 @@ export class AddQuestionModalComponent implements OnInit {
       );
     }
     if (type === 'range') {
+      const options = this.question?.config.options as any;
       this.questionForm.setControl(
         'config',
         this.fb.group({
           question: this.fb.control(questionValue, Validators.required),
-          options: this.fb.array(
-            this.question?.config.options ?? ['', ''],
-            Validators.required
-          ),
+          options: this.fb.group({
+            stars: this.fb.control(options?.stars ?? 5),
+            labels: this.fb.array(
+              options?.labels ?? ['', ''],
+              Validators.required
+            ),
+          }),
+        })
+      );
+    }
+    if (type === 'table') {
+      let tableControls: any;
+      if (this.question?.config.options) {
+        const rows = this.question?.config.options as string[][];
+        tableControls = rows.map((row: string[]) => this.fb.array(row));
+      } else {
+        tableControls = [this.fb.array([''])];
+      }
+
+      this.questionForm.setControl(
+        'config',
+        this.fb.group({
+          question: this.fb.control(questionValue, Validators.required),
+          options: this.fb.array(tableControls, Validators.required),
         })
       );
     }

@@ -1,0 +1,33 @@
+<div class="w-full mb-4">
+  <h4 class="mt-0 mb-2">Question name</h4>
+  <p-editor [formControl]="questionName" [style]="{height: '100px'}"></p-editor>
+</div>
+
+<div class="flex">
+  <button pButton icon="pi pi-plus" class="p-button-sm" (click)="addNewRow()" label="Add Row" type="button"></button>
+  <button pButton icon="pi pi-plus" class="p-button-sm ml-3" (click)="addNewColumn()" label="Add Column"
+          type="button"></button>
+</div>
+
+<table class="mt-4">
+  <tbody>
+  <tr>
+    <td *ngFor="let col of range(colNumber)" class="align-content-center">
+      <div class="w-full flex align-items-center">
+        <button pButton icon="pi pi-trash" class="p-button-sm ml-3" (click)="deleteColumn(col)" type="button"
+                *ngIf="colNumber > 1"></button>
+      </div>
+    </td>
+  </tr>
+  <tr *ngFor="let rowControl of rows; let i = index" class="inputs-table">
+    <td *ngFor="let colControl of cols(rowControl)" class="h-full border-1">
+      <textarea [formControl]="colControl" pInputTextarea></textarea>
+    </td>
+    <td>
+      <button pButton icon="pi pi-trash" class="p-button-sm ml-3" (click)="deleteRow(i)" type="button"
+              *ngIf="rowNumber > 1"></button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+

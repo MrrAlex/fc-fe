@@ -37,6 +37,7 @@ import {
 import {QuestionDownloadComponent} from './components/questions/question-download/question-download.component';
 import {CourseFacade} from '../store/course';
 import {AppStoreModule} from '../store/store.module';
+import { QuestionTableComponent } from './components/questions/question-table/question-table.component';
 
 const routes: Routes = [
   {
@@ -71,6 +72,7 @@ const routes: Routes = [
     AddQuestionModalComponent,
     QuestionRangeAnswerComponent,
     QuestionDownloadComponent,
+    QuestionTableComponent,
   ],
   imports: [
     CommonModule,
@@ -93,6 +95,6 @@ const routes: Routes = [
     AppStoreModule,
   ],
   providers: [DialogService, CourseFacade],
-  exports: [QuestionDownloadComponent, QuestionRangeAnswerComponent],
+  exports: [QuestionDownloadComponent, QuestionRangeAnswerComponent, QuestionTableComponent],
 })
 export class CourseModule {}

@@ -1,0 +1,22 @@
+.inputs-table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+
+  td {
+    border: 1px solid rgb(72, 48, 117);
+  }
+
+  .static-cell {
+    background-color: rgb(228, 233, 241);
+    font-weight: bolder;
+  }
+
+  textarea {
+    height: 100%;
+    border: none;
+    resize: none;
+    outline: none;
+    box-shadow: none;
+  }
+}

@@ -21,6 +21,9 @@
   <div *ngIf="type.value === 'range' && questionConfig">
     <app-question-range-answer [form]="questionConfig"></app-question-range-answer>
   </div>
+  <div *ngIf="type.value === 'table' && questionConfig">
+    <app-question-table [form]="questionConfig"></app-question-table>
+  </div>
   <div class="flex mt-4">
     <button class="p-button-sm p-button-secondary mr-3" type="button" pButton label="Cancel"
             (click)="closeModal()"></button>

@@ -6,7 +6,7 @@ export interface Question {
 
 export interface QuestionConfig {
   question: string;
-  options: QuestionOptions[] | string[];
+  options: QuestionOptions[] | string[] | string[][];
   moduleId?: string
 }
 

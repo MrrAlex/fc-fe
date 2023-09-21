@@ -19,7 +19,7 @@ export class QuestionRangeDisplayComponent {
     return this.question.get('question') as UntypedFormControl;
   }
 
-  get options(): QuestionOptions[] {
+  get options(): any {
     return this.question.get('options')?.value;
   }
 

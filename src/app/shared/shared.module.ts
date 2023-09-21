@@ -19,6 +19,7 @@ import { RatingModule } from 'primeng/rating';
 import { AuthService } from '../services/auth.service';
 import { ConfirmationService } from 'primeng/api';
 import {ConfirmDialogModule} from "primeng/confirmdialog";
+import { QuestionTableDisplayComponent } from './components/questions/question-table-display/question-table-display.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import {ConfirmDialogModule} from "primeng/confirmdialog";
     QuestionRadioDisplayComponent,
     QuestionRangeDisplayComponent,
     QuestionDownloadDisplayComponent,
+    QuestionTableDisplayComponent,
   ],
   imports: [
     CommonModule,

@@ -26,7 +26,6 @@ export class AddCourseComponent implements OnInit {
       if (params['id']) {
         this.courseFacade.loadCourse(params['id']);
         this.course$ = this.courseFacade.selectEntityById$(params['id']);
-        this.course$.subscribe(console.log)
         this.editMode = true;
         this.id = params['id'];
       }

@@ -27,6 +27,9 @@
           <div *ngIf="question.type === 'radio'">
             <app-question-radio-display [question]="groupByIndex(question._id)"></app-question-radio-display>
           </div>
+          <div *ngIf="question.type === 'table'">
+            <app-question-table-display [question]="groupByIndex(question._id)"></app-question-table-display>
+          </div>
           <div *ngIf="question.type === 'range'">
             <app-question-range-display [question]="groupByIndex(question._id)"></app-question-range-display>
           </div>
@@ -60,6 +63,9 @@
       <div *ngIf="question.type === 'radio'">
         <app-question-radio-display [question]="groupByIndex(question._id)"></app-question-radio-display>
       </div>
+      <div *ngIf="question.type === 'table'">
+        <app-question-table-display [question]="groupByIndex(question._id)"></app-question-table-display>
+      </div>
       <div *ngIf="question.type === 'range'">
         <app-question-range-display [question]="groupByIndex(question._id)"></app-question-range-display>
       </div>
@@ -73,7 +79,7 @@
   <button pButton label="Save" (click)="saveLesson()" icon="pi pi-save" class="mt-4"
           *ngIf="questions?.length && readonly"></button>
 
-  <button pButton label="Save Answer" (click)="saveAnswer()" icon="pi pi-save" class="mt-4"
+  <button pButton label="Отправить ответ" (click)="saveAnswer()" icon="pi pi-save" class="mt-4"
           *ngIf="!readonly && savePresent()"></button>
 </div>
 

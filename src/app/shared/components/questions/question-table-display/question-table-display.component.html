@@ -1,0 +1,17 @@
+<div [innerHTML]="questionLabel.value" class="mb-4"></div>
+<div class="mb-2 flex align-items-center">
+  <table class="inputs-table">
+    <tbody>
+    <tr *ngFor="let row of answer;let i = index">
+      <td *ngFor="let col of answerItem(row); let j = index" [class.static-cell]="options[i][j]">
+        <div *ngIf="options[i][j]">
+          {{options[i][j]}}
+        </div>
+        <div *ngIf="!options[i][j]">
+          <textarea [formControl]="col"></textarea>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

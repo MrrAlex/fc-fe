@@ -35,7 +35,7 @@ export class EditCourseQuestionsListComponent implements OnInit {
   questionsForm!: UntypedFormArray;
 
   @Input()
-  moduleId!: string
+  moduleId!: string;
 
   @Input()
   readonly = true;
@@ -87,8 +87,8 @@ export class EditCourseQuestionsListComponent implements OnInit {
     });
 
     ref.onClose.subscribe(() => {
-      this.cdr.markForCheck()
-    })
+      this.cdr.markForCheck();
+    });
   }
 
   saveLesson() {
@@ -96,7 +96,8 @@ export class EditCourseQuestionsListComponent implements OnInit {
   }
 
   saveAnswer() {
-    const answers = this.questionsForm.value
+    const answers = this.questionsForm
+      .getRawValue()
       .filter((val: any) => val)
       .map((val: any) => {
         const answer = this._answers?.find(
@@ -155,6 +156,33 @@ export class EditCourseQuestionsListComponent implements OnInit {
             ),
           });
         }
+
+        if (question.type === 'table') {
+          const options = question.config.options as string[][];
+          const answerValue = answer?.answer as string[][];
+          return this.fb.group({
+            question: question.config.question,
+            questionId: question._id,
+            options: this.fb.control(options),
+            answer: this.fb.array(
+              options.map((co, i) => {
+                const arr = this.fb.array(answerValue ? answerValue[i] : co);
+                if (readonly) {
+                  arr.controls.forEach((c) => c.disable());
+                } else {
+                  arr.controls.forEach((c, j) => {
+                    if (options[i][j]) {
+                      c.disable();
+                    }
+                  });
+                }
+
+                return arr;
+              })
+            ),
+          });
+        }
+
         return null;
       })
     );
@@ -179,11 +207,11 @@ export class EditCourseQuestionsListComponent implements OnInit {
     });
   }
 
-  downloadPdf({isBlock}: any, moduleId?: string) {
+  downloadPdf({ isBlock }: any, moduleId?: string) {
     if (isBlock) {
-      this.answersFacade.downloadCoursePdf()
+      this.answersFacade.downloadCoursePdf();
     } else {
-      this.answersFacade.downloadModulePdf(moduleId as string)
+      this.answersFacade.downloadModulePdf(moduleId as string);
     }
   }
 }
