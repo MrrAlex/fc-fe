@@ -9,7 +9,7 @@
           type="button"></button>
 </div>
 
-<table class="mt-4">
+<table class="mt-4 w-full">
   <tbody>
   <tr>
     <td *ngFor="let col of range(colNumber)" class="align-content-center">
@@ -21,7 +21,7 @@
   </tr>
   <tr *ngFor="let rowControl of rows; let i = index" class="inputs-table">
     <td *ngFor="let colControl of cols(rowControl)" class="h-full border-1">
-      <textarea [formControl]="colControl" pInputTextarea></textarea>
+      <textarea [formControl]="colControl" pInputTextarea class="w-full"></textarea>
     </td>
     <td>
       <button pButton icon="pi pi-trash" class="p-button-sm ml-3" (click)="deleteRow(i)" type="button"

@@ -1,6 +1,6 @@
 <div [innerHTML]="questionLabel.value" class="mb-4"></div>
 <div class="mb-2 flex align-items-center">
-  <table class="inputs-table">
+  <table class="inputs-table" [class.two-cols]="options[0].length === 2">
     <tbody>
     <tr *ngFor="let row of answer;let i = index">
       <td *ngFor="let col of answerItem(row); let j = index" [class.static-cell]="options[i][j]">
