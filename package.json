@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "build-app": "ng build-app",
+    "build-app": "ng build --configuration production",
     "start": "ng serve",
     "build": "node ./scripts/build.js",
     "watch": "ng build --watch --configuration development",
