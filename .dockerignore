@@ -1,5 +1,6 @@
-wordpress
+.angular
 db
+node_modules
 plugin
 scripts
-node_modules
+wordpress
