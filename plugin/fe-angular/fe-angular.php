@@ -8,7 +8,7 @@
 
 function load_ng_scripts() {
     wp_enqueue_style( 'ng_styles', plugin_dir_url( __FILE__ ) . 'dist/fc-fe/styles.30063b03cb50ddb0.css' );
-    wp_register_script( 'ng_main', plugin_dir_url( __FILE__ ) . 'dist/fc-fe/main.2bc2be5e59143e22.js', [], false, true );
+    wp_register_script( 'ng_main', plugin_dir_url( __FILE__ ) . 'dist/fc-fe/main.691d8e352f505168.js', [], false, true );
     wp_register_script( 'ng_polyfills', plugin_dir_url( __FILE__ ) . 'dist/fc-fe/polyfills.12e4f5b9b273a830.js', [], false, true );
     wp_register_script( 'ng_runtime', plugin_dir_url( __FILE__ ) . 'dist/fc-fe/runtime.86570498111e64df.js', [], false, true );
     wp_register_script( 'ng_additional', plugin_dir_url( __FILE__ ) . 'dist/fc-fe/504.c7e61e68fac32ec2.js', [], false, true );
