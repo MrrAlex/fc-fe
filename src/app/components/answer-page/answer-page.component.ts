@@ -28,11 +28,5 @@ export class AnswerPageComponent implements OnInit {
         this.answersFacade.loadAnswers(this.lessonId);
       }
     });
-
-    setTimeout(() => {
-      console.log(
-        (document.getElementsByTagName('app-root')[0] as any)['offsetHeight']
-      );
-    }, 100);
   }
 }

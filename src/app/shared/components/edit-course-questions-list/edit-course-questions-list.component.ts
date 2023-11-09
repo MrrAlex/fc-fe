@@ -22,7 +22,7 @@ import { ConfirmationService } from 'primeng/api';
   templateUrl: './edit-course-questions-list.component.html',
   styleUrls: ['./edit-course-questions-list.component.scss'],
 })
-export class EditCourseQuestionsListComponent implements OnInit {
+export class EditCourseQuestionsListComponent {
   constructor(
     private lessonsFacade: LessonFacade,
     private answersFacade: AnswersFacade,
@@ -63,12 +63,21 @@ export class EditCourseQuestionsListComponent implements OnInit {
             this._answers,
             this.readonly
           );
+
+          setTimeout(() => this.sendContainerHeightToParent(), 0);
         }
       });
     }
   }
 
-  ngOnInit() {}
+  private sendContainerHeightToParent() {
+    window.parent.postMessage(
+      this.lesson +
+        '||' +
+        (document.getElementsByTagName('app-root')[0] as any)['offsetHeight'],
+      'http://finuchenie.online/'
+    );
+  }
 
   groupByIndex(questionId?: string) {
     const questionIndex = this.questions.findIndex((q) => q._id === questionId);
