@@ -64,19 +64,24 @@ export class EditCourseQuestionsListComponent {
             this.readonly
           );
 
-          setTimeout(() => this.sendContainerHeightToParent(), 0);
+          this.sendContainerHeightToParent();
         }
       });
     }
   }
 
   private sendContainerHeightToParent() {
-    window.parent.postMessage(
-      this.lesson +
-        '||' +
-        (document.getElementsByTagName('app-root')[0] as any)['offsetHeight'],
-      'http://finuchenie.online/'
-    );
+    setInterval(() => {
+      console.log(
+        (document.getElementsByTagName('app-root')[0] as any)['offsetHeight']
+      );
+      window.parent.postMessage(
+        this.lesson +
+          '||' +
+          (document.getElementsByTagName('app-root')[0] as any)['offsetHeight'],
+        'http://finuchenie.online'
+      );
+    }, 1000);
   }
 
   groupByIndex(questionId?: string) {
