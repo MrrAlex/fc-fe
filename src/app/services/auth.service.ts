@@ -16,6 +16,6 @@ export class AuthService {
 
   retrieveLoginData() {
     // @ts-ignore
-    this._user = window.parent?.user_data ? window.parent.user_data['user_id'] : null;
+    this._user = null;
   }
 }
