@@ -71,10 +71,7 @@ export class EditCourseQuestionsListComponent {
   }
 
   private sendContainerHeightToParent() {
-    setInterval(() => {
-      console.log(
-        (document.getElementsByTagName('app-root')[0] as any)['offsetHeight']
-      );
+    setTimeout(() => {
       window.parent.postMessage(
         this.lesson +
           '||' +
