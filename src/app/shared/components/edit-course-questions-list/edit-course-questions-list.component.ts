@@ -71,14 +71,18 @@ export class EditCourseQuestionsListComponent {
   }
 
   private sendContainerHeightToParent() {
-    setTimeout(() => {
-      window.parent.postMessage(
-        this.lesson +
-          '||' +
-          (document.getElementsByTagName('app-root')[0] as any)['offsetHeight'],
-        'http://finuchenie.online'
-      );
-    }, 1000);
+    const interval = setInterval(() => {
+      const height = (document.getElementsByTagName('app-root')[0] as any)[
+        'offsetHeight'
+      ];
+      if (height > 0) {
+        window.parent.postMessage(
+          `${this.lesson}||${height}`,
+          'http://finuchenie.online'
+        );
+        clearInterval(interval);
+      }
+    }, 100);
   }
 
   groupByIndex(questionId?: string) {
