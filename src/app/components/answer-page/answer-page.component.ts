@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { switchMap, take, tap } from 'rxjs';
+import { forkJoin, take } from 'rxjs';
 import { LessonFacade } from '../../store/lesson';
 import { AnswersFacade } from '../../store/answers';
 import { AuthService } from '../../services/auth.service';
@@ -21,21 +21,16 @@ export class AnswerPageComponent implements OnInit {
   lessonId!: string;
 
   ngOnInit() {
-    this.route.queryParams
-      .pipe(
-        take(1),
-        tap((params) => {
-          if (params['lessonId']) {
-            this.lessonId = params['lessonId'];
-          }
-        }),
-        switchMap(() => this.auth.user$)
-      )
-      .subscribe((user) => {
+    forkJoin([this.route.queryParams.pipe(take(1)), this.auth.user$]).subscribe(
+      ([params, user]) => {
+        if (params['lessonId']) {
+          this.lessonId = params['lessonId'];
+        }
         if (this.lessonId) {
           this.lessonFacade.loadLesson(this.lessonId);
           this.answersFacade.loadAnswers(this.lessonId, user);
         }
-      });
+      }
+    );
   }
 }
