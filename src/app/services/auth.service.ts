@@ -17,6 +17,7 @@ export class AuthService {
   retrieveLoginData() {
     // @ts-ignore
     window.addEventListener('message', (message) => {
+      console.log(message);
       if (message.origin === 'http://finuchenie.online') {
         this._user = message.data;
       }
