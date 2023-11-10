@@ -70,7 +70,7 @@ const routes: Routes = [
     {
       provide: APP_INITIALIZER,
       useFactory: () => {
-        return window.postMessage(true);
+        return () => window.parent.postMessage(true, 'http://finuchenie.online');
       },
       multi: true
     },
