@@ -21,6 +21,7 @@ export class AuthService {
   retrieveLoginData() {
     window.addEventListener('message', (message) => {
       if (message.origin === 'http://finuchenie.online') {
+        console.log('set user to', message.data);
         this._user = message.data;
         this._user$.next(message.data);
       }
