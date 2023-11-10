@@ -1,4 +1,4 @@
-import { isDevMode, NgModule } from '@angular/core';
+import { APP_INITIALIZER, isDevMode, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -20,8 +20,8 @@ import { MessagesModule } from 'primeng/messages';
 import { AppStoreModule } from './store/store.module';
 import { StoreFacade } from './store/store.facade';
 import { MessageService } from 'primeng/api';
-import {ProgressSpinnerModule} from "primeng/progressspinner";
-import {ConfirmDialogModule} from "primeng/confirmdialog";
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 const routes: Routes = [
   {
@@ -52,7 +52,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     StoreModule.forRoot(),
     EffectsModule.forRoot(),
-    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: !isDevMode()}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     MenubarModule,
     InputTextModule,
     CardModule,
@@ -63,7 +63,18 @@ const routes: Routes = [
     ProgressSpinnerModule,
     ConfirmDialogModule,
   ],
-  providers: [HttpClient, StoreFacade, MessageService],
+  providers: [
+    HttpClient,
+    StoreFacade,
+    MessageService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: () => {
+        window.postMessage(true, 'http://finuchenie.online');
+      },
+      multi: true
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

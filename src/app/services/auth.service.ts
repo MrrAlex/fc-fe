@@ -15,13 +15,10 @@ export class AuthService {
   }
 
   retrieveLoginData() {
-    console.log(window);
     window.addEventListener('message', (message) => {
-      console.log(message);
       if (message.origin === 'http://finuchenie.online') {
         this._user = message.data;
       }
-    })
-
+    });
   }
 }
