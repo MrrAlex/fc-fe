@@ -26,8 +26,8 @@ export class AnswersFacade {
     this.store.dispatch(AnswerActions.saveAnswers({ answers, user: this.auth.currentUser }));
   }
 
-  loadAnswers(lessonId: string) {
-    this.store.dispatch(AnswerActions.loadAnswers({ lessonId, user: this.auth.currentUser }));
+  loadAnswers(lessonId: string, user: string) {
+    this.store.dispatch(AnswerActions.loadAnswers({ lessonId, user }));
   }
 
   downloadCoursePdf() {
