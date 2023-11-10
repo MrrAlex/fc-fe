@@ -70,7 +70,7 @@ const routes: Routes = [
     {
       provide: APP_INITIALIZER,
       useFactory: () => {
-        window.postMessage(true);
+        return window.postMessage(true);
       },
       multi: true
     },
