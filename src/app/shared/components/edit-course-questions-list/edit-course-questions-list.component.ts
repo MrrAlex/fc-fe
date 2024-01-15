@@ -42,6 +42,7 @@ export class EditCourseQuestionsListComponent {
 
   _answers!: Answer[] | null;
   lesson!: string;
+  course?: string;
   lessonName!: string;
   questions!: Question[];
 
@@ -57,6 +58,7 @@ export class EditCourseQuestionsListComponent {
         this._answers = answers;
         this.lessonName = lesson?.name as string;
         this.lesson = lesson?._id as string;
+        this.course = lesson?.course;
         if (lesson) {
           this.questionsForm = this.createForm(
             this.questions,
@@ -224,7 +226,7 @@ export class EditCourseQuestionsListComponent {
 
   downloadPdf({ isBlock }: any, moduleId?: string) {
     if (isBlock) {
-      this.answersFacade.downloadCoursePdf();
+      this.answersFacade.downloadCoursePdf(this.course as string);
     } else {
       this.answersFacade.downloadModulePdf(moduleId as string);
     }

@@ -22,11 +22,11 @@ export class AnswersService {
     });
   }
 
-  loadPdfWithAnswers(user: string, moduleId?: string) {
+  loadPdfWithAnswers(user: string, module?: string, course?: string,) {
     return this.http.post<Blob>(
       Constants.generatePdf(user),
       null,
-      moduleId ? { moduleId } : undefined
+      {course, module}
     );
   }
 }

@@ -23,7 +23,7 @@ function attach_ng() {
             'user_id' => $user,
             'user_roles' => json_encode( ( array ) $user->roles)
         );
-      wp_localize_script( 'ng_main', 'user_data', $data_array );
+      wp_localize_script( 'ng_main', 'window.user_data', $data_array );
 
     wp_enqueue_script( 'ng_main' );
     wp_enqueue_script( 'ng_polyfills' );

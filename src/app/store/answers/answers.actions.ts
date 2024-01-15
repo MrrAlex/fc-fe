@@ -23,7 +23,7 @@ export const loadAnswersFailed = createAction('[Answers] Load Answers Failed');
 
 export const loadCoursePdf = createAction(
   '[Answers] Load Pdf for Whole Course',
-  props<{ user: string }>()
+  props<{ courseId: string, user: string }>()
 );
 export const loadModulePdf = createAction(
   '[Answers] Load Pdf for Module',

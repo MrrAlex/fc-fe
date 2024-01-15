@@ -43,7 +43,7 @@ export class AnswersEffects {
     this.actions$.pipe(
       ofType(AnswerActions.loadModulePdf),
       switchMap(({ moduleId, user }) =>
-        this.answersService.loadPdfWithAnswers(user, moduleId).pipe(
+        this.answersService.loadPdfWithAnswers(user, undefined, moduleId).pipe(
           map((pdf) => AnswerActions.loadPdfSuccess({ pdf })),
           catchError(() => of(AnswerActions.loadPdfFailed()))
         )
@@ -54,7 +54,7 @@ export class AnswersEffects {
   loadCoursePdf = createEffect(() =>
     this.actions$.pipe(
       ofType(AnswerActions.loadCoursePdf),
-      switchMap(({ user }) =>
+      switchMap(({ courseId, user }) =>
         this.answersService.loadPdfWithAnswers(user).pipe(
           map((pdf) => AnswerActions.loadPdfSuccess({ pdf })),
           catchError(() => of(AnswerActions.loadPdfFailed()))

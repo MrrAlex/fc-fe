@@ -30,8 +30,8 @@ export class AnswersFacade {
     this.store.dispatch(AnswerActions.loadAnswers({ lessonId, user }));
   }
 
-  downloadCoursePdf() {
-    this.store.dispatch(AnswerActions.loadCoursePdf({ user: this.auth.currentUser }));
+  downloadCoursePdf(courseId: string) {
+    this.store.dispatch(AnswerActions.loadCoursePdf({ courseId,  user: this.auth.currentUser }));
   }
 
   downloadModulePdf(moduleId: string) {
