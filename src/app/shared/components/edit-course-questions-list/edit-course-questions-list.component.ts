@@ -226,9 +226,9 @@ export class EditCourseQuestionsListComponent {
 
   downloadPdf({ isBlock }: any, moduleId?: string) {
     if (isBlock) {
-      this.answersFacade.downloadCoursePdf(this.course as string);
-    } else {
       this.answersFacade.downloadModulePdf(moduleId as string);
+    } else {
+      this.answersFacade.downloadCoursePdf(this.course as string);
     }
   }
 }
