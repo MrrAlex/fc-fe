@@ -225,6 +225,7 @@ export class EditCourseQuestionsListComponent {
   }
 
   downloadPdf({ isBlock }: any, moduleId?: string) {
+    console.log(isBlock);
     if (isBlock) {
       this.answersFacade.downloadModulePdf(moduleId as string);
     } else {
