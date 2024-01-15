@@ -224,8 +224,7 @@ export class EditCourseQuestionsListComponent {
     });
   }
 
-  downloadPdf({ isBlock }: any, moduleId?: string) {
-    console.log(isBlock);
+  downloadPdf(isBlock: boolean, moduleId?: string) {
     if (isBlock) {
       this.answersFacade.downloadModulePdf(moduleId as string);
     } else {
