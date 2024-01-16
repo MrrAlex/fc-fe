@@ -1,6 +1,6 @@
 <div *ngIf="questions" class="lesson-wrapper">
   <div class="flex align-items-center">
-    <h1>{{lessonName}}</h1>
+    <h1 *ngIf="lessonName && lessonName.length > 0">{{lessonName}}</h1>
     <div class="ml-4" *ngIf="readonly">
       <button pButton label="Add new question" (click)="addQuestionModal()" icon="pi pi-plus"></button>
     </div>
