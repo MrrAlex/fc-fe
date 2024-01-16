@@ -78,10 +78,10 @@ export class EditCourseQuestionsListComponent {
         'offsetHeight'
       ];
       if (height > 0) {
-        window.parent.postMessage(
-          `${this.lesson}||${height}`,
-          'http://finuchenie.online'
-        );
+        // window.parent.postMessage(
+        //   `${this.lesson}||${height}`,
+        //   'http://finuchenie.online'
+        // );
         clearInterval(interval);
       }
     }, 100);
