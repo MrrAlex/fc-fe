@@ -67,13 +67,13 @@ const routes: Routes = [
     HttpClient,
     StoreFacade,
     MessageService,
-    // {
-    //   provide: APP_INITIALIZER,
-    //   useFactory: () => {
-    //     return () => window.parent.postMessage(true, 'http://finuchenie.online');
-    //   },
-    //   multi: true
-    // },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: () => {
+        return () => window.parent.postMessage(true, 'http://finuchenie.online');
+      },
+      multi: true
+    },
   ],
   bootstrap: [AppComponent],
 })
