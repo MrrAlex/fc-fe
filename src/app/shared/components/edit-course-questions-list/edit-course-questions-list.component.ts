@@ -1,6 +1,4 @@
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
-import { CourseState } from '../../../store/course';
-import { Store } from '@ngrx/store';
+import { ChangeDetectorRef, Component, Input } from '@angular/core';
 import { LessonFacade } from '../../../store/lesson';
 import { DialogService } from 'primeng/dynamicdialog';
 import { AddQuestionModalComponent } from '../../../course/components/modals/add-question-modal/add-question-modal.component';
@@ -13,7 +11,7 @@ import {
 import { AnswersFacade } from '../../../store/answers';
 import { Answer } from '../../../store/models/answer.model';
 import { combineLatest, of } from 'rxjs';
-import { cloneDeep } from 'lodash';
+import { cloneDeep } from 'lodash-es';
 import { Question } from '../../../store/models/question.model';
 import { ConfirmationService } from 'primeng/api';
 

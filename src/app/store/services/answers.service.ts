@@ -30,6 +30,6 @@ export class AnswersService {
     if (course) {
       params.course = course;
     }
-    return this.http.post<Blob>(Constants.generatePdf(user), null, params);
+    return this.http.postForBlob(Constants.generatePdf(user), null, params);
   }
 }

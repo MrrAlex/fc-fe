@@ -11,7 +11,7 @@ import {
   QuestionOptions,
 } from '../../../../store/models/question.model';
 import { LessonFacade } from '../../../../store/lesson';
-import * as lodash from 'lodash';
+import * as lodash from 'lodash-es';
 
 @Component({
   selector: 'app-add-question-modal',
