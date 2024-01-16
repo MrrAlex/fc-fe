@@ -57,6 +57,7 @@ export const answersReducer = createReducer(
   on(AnswerActions.loadCoursePdf, (state) => ({ ...state, loading: true })),
   on(AnswerActions.loadModulePdf, (state) => ({ ...state, loading: true })),
   on(AnswerActions.loadPdfSuccess, (state, { pdf }) => {
+    console.log(pdf);
     FileSaver.saveAs(pdf, 'БПУФ.pdf');
     return { ...state, loading: false };
   }),
