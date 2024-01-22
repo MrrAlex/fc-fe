@@ -1,3 +1,2 @@
-<i class="pi pi-download mr-2"></i>
 <div [innerHTML]="sectionText"></div>
-<button pButton (click)="download()" label="Скачать {{isBlock ? 'Модуль' : 'Курс'}}" [disabled]="readonly"></button>
+<button pButton (click)="download()" icon="pi pi-download" label="Скачать {{isBlock ? 'Модуль' : 'Курс'}}" [disabled]="readonly"></button>
